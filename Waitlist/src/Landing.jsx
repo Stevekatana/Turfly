@@ -40,13 +40,14 @@ function Landing() {
           Glide: Book Your <span className="text-[#A3FF12]">Turf Instantly</span>
         </h1>
         <p className="text-[#9CA3AF] text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-          Stop wasting time on calls and WhatsApp groups. See availability, book instantly, and play stress-free.
+          No more double bookings. No more last-minute chaos.
+          Find available turfs instantly and lock your game in seconds.
         </p>
         <a
           href="#waitlist"
           className="group relative inline-flex items-center justify-center px-10 py-4 bg-[#A3FF12] text-[#0B1220] rounded-full text-lg font-bold uppercase tracking-widest overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_-5px_#A3FF12] active:scale-95"
         >
-          <span className="relative z-10">Book Turf Now</span>
+          <span className="relative z-10">Get Early Access</span>
         </a>
       </section>
 
@@ -119,7 +120,7 @@ function Landing() {
 
       <footer className="py-12 border-t border-[#1E293B] text-center">
         <p className="text-[#9CA3AF] text-sm uppercase tracking-widest opacity-50">
-          © {new Date().getFullYear()} Glide. All Rights Reserved.
+          © {new Date().getFullYear()} Glide.Co. All Rights Reserved.
         </p>
       </footer>
     </div>
