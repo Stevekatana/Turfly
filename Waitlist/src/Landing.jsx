@@ -28,7 +28,7 @@ function Landing() {
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-[#1E293B] bg-[#0B1220]/80">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center">
           <h1 className="text-2xl font-black tracking-tighter italic uppercase text-[#A3FF12]">
-            Turfly
+            Glide
           </h1>
         </div>
       </nav>
@@ -37,7 +37,7 @@ function Landing() {
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#A3FF12]/10 blur-[120px] rounded-full -z-10" />
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-none mb-6 italic">
-          Turfly: Book Your <span className="text-[#A3FF12]">Turf Instantly</span>
+          Glide: Book Your <span className="text-[#A3FF12]">Turf Instantly</span>
         </h1>
         <p className="text-[#9CA3AF] text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
           Stop wasting time on calls and WhatsApp groups. See availability, book instantly, and play stress-free.
@@ -54,7 +54,7 @@ function Landing() {
       <section className="py-24 px-4 md:px-8 bg-[#111827] border-y border-[#1E293B]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold mb-16 uppercase italic text-center tracking-tight">
-            Why Players <span className="text-[#00F5FF]">Love Turfly</span>
+            Why Players <span className="text-[#00F5FF]">Love Glide</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             <div className="group bg-[#1F2937] p-8 rounded-2xl border border-[#1E293B] transition-all duration-300 hover:-translate-y-2 hover:border-[#A3FF12]/30">
@@ -88,7 +88,7 @@ function Landing() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tight italic">Secure Your Spot</h2>
           <p className="text-[#9CA3AF] text-lg mb-12 max-w-xl mx-auto">
-            Join our waitlist and get early access to Turfly when it goes live.
+            Join our waitlist and get early access to Glide when it goes live.
           </p>
           {!submitted ? (
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-stretch justify-center gap-3 p-2 bg-[#111827] rounded-2xl border border-[#1E293B] focus-within:border-[#A3FF12]/50 transition-all duration-300">
@@ -119,7 +119,7 @@ function Landing() {
 
       <footer className="py-12 border-t border-[#1E293B] text-center">
         <p className="text-[#9CA3AF] text-sm uppercase tracking-widest opacity-50">
-          © {new Date().getFullYear()} Turfly. All Rights Reserved.
+          © {new Date().getFullYear()} Glide. All Rights Reserved.
         </p>
       </footer>
     </div>
