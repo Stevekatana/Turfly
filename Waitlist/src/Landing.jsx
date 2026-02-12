@@ -88,8 +88,12 @@ function Landing() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00F5FF]/5 blur-[150px] rounded-full -z-10" />
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tight italic">Secure Your Spot</h2>
-          <p className="text-[#9CA3AF] text-lg mb-12 max-w-xl mx-auto">
+          <p className="text-[#9CA3AF] text-lg mb-7 max-w-xl mx-auto">
             Join our waitlist and get early access to Glide when it goes live.
+          </p>
+
+          <p className="text-[#9CA3AF] text-lg mb-12 max-w-xl mx-auto">
+              For any inquiries, <a href="mailto:ksteve173@gmail.com" className='text-[#A3FF12] underline'>kindly shoot us an Email</a>
           </p>
           {!submitted ? (
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-stretch justify-center gap-3 p-2 bg-[#111827] rounded-2xl border border-[#1E293B] focus-within:border-[#A3FF12]/50 transition-all duration-300">
@@ -120,7 +124,7 @@ function Landing() {
 
       <footer className="py-12 border-t border-[#1E293B] text-center">
         <p className="text-[#9CA3AF] text-sm uppercase tracking-widest opacity-50">
-          © {new Date().getFullYear()} Glide.Co. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Glide. All Rights Reserved.
         </p>
       </footer>
     </div>
