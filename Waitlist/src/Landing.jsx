@@ -88,7 +88,7 @@ function Landing() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00F5FF]/5 blur-[150px] rounded-full -z-10" />
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 uppercase tracking-tight italic">Secure Your Spot</h2>
-          <p className="text-[#9CA3AF] text-lg mb-7 max-w-xl mx-auto">
+          <p className="text-[#9CA3AF] text-lg mb-2 max-w-xl mx-auto">
             Join our waitlist and get early access to Glide when it goes live.
           </p>
 
