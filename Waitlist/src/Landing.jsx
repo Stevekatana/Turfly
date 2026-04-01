@@ -93,7 +93,7 @@ function Landing() {
           </p>
 
           <p className="text-[#9CA3AF] text-lg mb-12 max-w-xl mx-auto">
-              For any inquiries, <a href="mailto:ksteve173@gmail.com" className='text-[#A3FF12] underline'>kindly shoot us an Email</a>
+              For any inquiries, <a href="mailto:ksteve173@gmail.com" className='text-[#A3FF12] underline'>kindly shoot us an Email.</a>
           </p>
           {!submitted ? (
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-stretch justify-center gap-3 p-2 bg-[#111827] rounded-2xl border border-[#1E293B] focus-within:border-[#A3FF12]/50 transition-all duration-300">

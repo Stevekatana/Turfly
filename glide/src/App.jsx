@@ -1,54 +1,85 @@
 import React, { useEffect, useState } from 'react'
-import {Routes, Route, Navigate} from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
-import Landing from '../src/pages/Landing'
-import Register from '../src/pages/client/Register'
-import Login from './pages/client/Login'
-import { supabase } from './supabaseClient'
+import Landing from './Pages/Landing'
+import ClientLogin from './Pages/Auth/Client/ClientLogin'
+import ClientSignup from './Pages/Auth/Client/ClientSignup'
+import VendorSignup from './Pages/Auth/Owner/VendorSignup'
+import VendorLogin from './Pages/Auth/Owner/VendorLogin'
 
-import ClientHome from './pages/client/Home'
-import Confirm from './component/Confirm'
-import Forgot from './pages/auth/Forgot'
-import Reset from './pages/auth/Reset'
-import View from './pages/client/View'
+import Home from './Pages/ClientPages/Home'
+
+import Dashboard from './Pages/OwnerPages/Dashboard'
+import { supabase } from '../supabaseClient'
+import Forgot from './Components/Forgot'
+import Reset from './Components/Reset'
 
 function App() {
-  const [session, setSession] = useState(null)
-  const [loading, setLoading] = useState(true);
-
+  const [role, setRole] = useState({})
+  const [sesh, setSession] = useState(null)
+  const [loading, setLoading] = useState(true)
+  
   useEffect(()=>{
-    supabase.auth.getSession()
-    .then(({data:{session}})=>{
-      setSession(session)
-      setLoading(false);
-    })
-    const {data:{subscription}} = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-      setLoading(false);
-    })
-    return ()=>subscription.unsubscribe()
-
+    fetchSession()
   },[])
 
-  if (loading) {
-    return <div className="h-screen bg-gray-900 text-white flex items-center justify-center">Loading...</div>;
+  async function fetchSession(){
+    try{  
+      const { data:{session}, error:{profileError} } = await supabase.auth.getSession()
+      if(session){
+        setSession(session)
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single()
+        if(data){
+          setRole(data.role)
+        }else{
+          console.log(error.message)
+        }
+      }else{
+        console.log(profileError)
+      }
+      
+    }catch(error){
+      console.error(error)
+    }finally{
+      setLoading(false)
+    }
   }
 
-  return (
-    <div>
-      <Routes>
-        {/* Unprotected Routes */}
-        <Route path='/' element={<Landing />}/>
-        <Route path='/register' element={<Register />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/confirm' element={<Confirm />}/>
-        <Route path='/forgot' element={<Forgot />}/>
-        <Route path='/reset' element={<Reset />}/>
+  if(loading) return <div>Loading...</div>
 
-        {/* protected routes */}
-        {/* client Routes */}
-        <Route path='/store' element={session ? <ClientHome /> : <Navigate to='/login'/>}/>
-        <Route path='/view' element={session ? <View /> : <Navigate to='/login'/>}/>
+  return (
+    <div className='h-screen'>
+      <Routes>
+
+        {/* Public Routes */}
+        <Route path='/' element={<Landing />} />
+        <Route path ='/client/login' element={<ClientLogin />}/>
+        <Route path='/client/register' element={<ClientSignup/>}/>
+        <Route path='/owner/register' element={<VendorSignup />}/>
+        <Route path='/owner/login' element={<VendorLogin/>} />
+        <Route path='/reset' element={<Forgot />}/>
+        <Route path='/update' element={<Reset />}/>
+
+        {/* ****************************************************************** */}
+
+        {/* Client Routes */}
+        <Route 
+          path='/client/store' 
+          element={sesh && role === 'client' ? <Home /> : <Navigate to='/client/login'/> }
+        />
+
+        {/* ****************************************************************** */}
+
+
+        {/* Owner Routes */}
+        <Route 
+          path='/owner/dashboard' 
+          element={sesh && role === 'owner' ? <Dashboard /> : <Navigate to='/vendor/login'/> }
+        />
       </Routes>
     </div>
   )

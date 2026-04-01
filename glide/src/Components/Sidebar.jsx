@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Home() {
+function Sidebar() {
   return (
     <div>
-      Vendor Home
+      Owner sidebar
     </div>
   )
 }
 
-export default Home
+export default Sidebar
