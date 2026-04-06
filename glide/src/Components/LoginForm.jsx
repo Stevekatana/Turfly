@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function LoginForm({role = 'client'}) {
     const navigate = useNavigate()
+    const [error, setError] = useState({})
     const [showAlert, setAlert] = useState(false)
     const [loading, setLoading] = useState(false)
     const [formData, setData] = useState({
@@ -15,18 +16,29 @@ function LoginForm({role = 'client'}) {
     async function handleLogin(e){
         e.preventDefault()
         setLoading(true)
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: formData.email,
-            password: formData.password
-        })
+        try{
+            const { data, error:authError } = await supabase.auth.signInWithPassword({
+                email: formData.email,
+                password: formData.password
+            })
 
-        if(data){
-            role === 'client'
-            ? navigate('/client/store')
-            : navigate('/owner/dashboard')
-        }else{
-            launchInterrupt()
-            console.log(error.message)
+            if(authError){
+                setError(authError.message)
+                launchInterrupt()
+            } else{
+                const path = `/${role === 'client' ? 'client/store' : 'owner/dashboard'}`
+                navigate(path)
+            }
+
+            // if(data.session){
+            //     const path = `/${role === 'client' ? 'client/store' : 'owner/dashboard'}`
+            //     navigate(path)
+            // }
+            
+        }catch(error){
+            console.log(error.error)
+        }finally{
+            setLoading(false)
         }
     }
     function launchInterrupt(){
@@ -36,7 +48,7 @@ function LoginForm({role = 'client'}) {
     <div className='w-150'>
         <AlertBox 
             title="Warning!!!"
-            message="Wrong credentials. Kindly try again."
+            message={error}
             visible={showAlert}
             onNo={()=>{setAlert(false)}}
             onYes={()=>{setAlert(false); setLoading(false)}}

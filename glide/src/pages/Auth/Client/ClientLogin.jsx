@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginForm from '../../../Components/LoginForm'
 import { Link } from 'react-router-dom'
+import AlertBox from '../../../Components/AlertBox'
 
 function ClientLogin() {
   return (
@@ -20,7 +21,13 @@ function ClientLogin() {
               </span>
             </div>
             <div>
-              <Link to='/reset' className='italic text-sm hover:underline hover:text-red-500'>Forgot password? click here</Link>
+              <span className='italic text-sm'>Are you a turf owner? </span>
+              <span>
+                <Link to='/owner/login' className='italic text-sm hover:underline hover:text-red-500'>Log in to your dashboard here</Link>
+              </span>
+            </div>
+            <div>
+              <Link to='/forgot' className='italic text-sm hover:underline hover:text-red-500'>Forgot password? click here</Link>
             </div>
           </div>
         </div>      

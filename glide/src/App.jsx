@@ -11,8 +11,9 @@ import Home from './Pages/ClientPages/Home'
 
 import Dashboard from './Pages/OwnerPages/Dashboard'
 import { supabase } from '../supabaseClient'
-import Forgot from './Components/Forgot'
-import Reset from './Components/Reset'
+import Forgot from './Pages/Auth/Forgot'
+import Reset from './Pages/Auth/Reset'
+import View from './Pages/ClientPages/View'
 
 function App() {
   const [role, setRole] = useState({})
@@ -25,23 +26,22 @@ function App() {
 
   async function fetchSession(){
     try{  
-      const { data:{session}, error:{profileError} } = await supabase.auth.getSession()
-      if(session){
-        setSession(session)
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', session.user.id)
-          .single()
-        if(data){
-          setRole(data.role)
+      const { data:{session}, error } = await supabase.auth.getSession()
+        if(session){
+          setSession(session)
+          const { data, error:profileError } = await supabase
+            .from('profiles')
+            .select('role')
+            .eq('id', session.user.id)
+            .single()
+          if(data){
+            setRole(data.role)
+          }else{
+            console.log(error.message)
+          }
         }else{
-          console.log(error.message)
+          console.log(error)
         }
-      }else{
-        console.log(profileError)
-      }
-      
     }catch(error){
       console.error(error)
     }finally{
@@ -61,8 +61,10 @@ function App() {
         <Route path='/client/register' element={<ClientSignup/>}/>
         <Route path='/owner/register' element={<VendorSignup />}/>
         <Route path='/owner/login' element={<VendorLogin/>} />
+
+        {/* Work on the password reset section */}
         <Route path='/reset' element={<Forgot />}/>
-        <Route path='/update' element={<Reset />}/>
+        <Route path='/forgot' element={<Reset />}/>
 
         {/* ****************************************************************** */}
 
@@ -70,6 +72,10 @@ function App() {
         <Route 
           path='/client/store' 
           element={sesh && role === 'client' ? <Home /> : <Navigate to='/client/login'/> }
+        />
+        <Route 
+          path='/client/view' 
+          element={sesh && role === 'client' ? <View /> : <Navigate to='/client/login'/> }
         />
 
         {/* ****************************************************************** */}

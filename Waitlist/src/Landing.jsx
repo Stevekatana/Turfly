@@ -25,7 +25,7 @@ function Landing() {
 
   return (
     <div className="bg-[#0B1220] text-[#F9FAFB] min-h-screen selection:bg-[#A3FF12] selection:text-[#0B1220] font-sans">
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-[#1E293B] bg-[#0B1220]/80">
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md border-b border-[#1E293B] bg-[#0B1220]">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center">
           <h1 className="text-2xl font-black tracking-tighter italic uppercase text-[#A3FF12]">
             Glide
