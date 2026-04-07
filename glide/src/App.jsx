@@ -14,6 +14,7 @@ import { supabase } from '../supabaseClient'
 import Forgot from './Pages/Auth/Forgot'
 import Reset from './Pages/Auth/Reset'
 import View from './Pages/ClientPages/View'
+import Checkout from './Pages/ClientPages/Checkout'
 
 function App() {
   const [role, setRole] = useState({})
@@ -67,6 +68,9 @@ function App() {
         <Route path='/forgot' element={<Reset />}/>
 
         {/* ****************************************************************** */}
+        {/* ================================================================== */}
+        {/* ****************************************************************** */}
+
 
         {/* Client Routes */}
         <Route 
@@ -77,7 +81,13 @@ function App() {
           path='/client/view' 
           element={sesh && role === 'client' ? <View /> : <Navigate to='/client/login'/> }
         />
+        <Route 
+          path='/client/checkout' 
+          element={sesh && role === 'client' ? <Checkout /> : <Navigate to='/client/login'/> }
+        />
 
+        {/* ****************************************************************** */}
+        {/* ================================================================== */}
         {/* ****************************************************************** */}
 
 

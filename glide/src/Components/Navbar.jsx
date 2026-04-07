@@ -52,9 +52,18 @@ function Navbar() {
           <IoMdPin />
           <p>Nairobi</p>
         </div>
+
         <div  className='flex items-center justify-center gap-2 text-white'>
           <IoPerson />
           <p>{profile}</p>
+        </div>
+
+        {/* dropDown */}
+        <div>
+          
+        </div>
+        <div>
+
         </div>
         <div  className='flex items-center justify-center gap-2 text-white'>
           <button onClick={handleLogout}>Signout</button>
