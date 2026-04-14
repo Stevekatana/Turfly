@@ -1,5 +1,6 @@
 import React from 'react'
 import RegistrationForm from '../../../Components/RegistrationForm'
+import { Link } from 'react-router-dom'
 
 function VendorSignup() {
   return (
@@ -11,6 +12,12 @@ function VendorSignup() {
           <div>
             <RegistrationForm role='owner'/>
           </div>
+              <div>
+                <span className='italic text-sm'>Already have an account? </span>
+                <span>
+                  <Link to='/owner/login' className='italic text-sm hover:underline hover:text-red-500'>Log in here</Link>
+                </span>
+              </div>
         </div>      
     </div>
   )

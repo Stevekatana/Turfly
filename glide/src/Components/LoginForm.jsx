@@ -14,6 +14,7 @@ function LoginForm({role = 'client'}) {
     })
 
     async function handleLogin(e){
+        console.log(role)
         e.preventDefault()
         setLoading(true)
         try{
@@ -22,18 +23,18 @@ function LoginForm({role = 'client'}) {
                 password: formData.password
             })
 
-            if(authError){
-                setError(authError.message)
-                launchInterrupt()
-            } else{
-                const path = `/${role === 'client' ? 'client/store' : 'owner/dashboard'}`
-                navigate(path)
-            }
+                // let path = `/${role === 'client' ? 'client/store' : 'owner/dashboard'}`
+                // navigate(path)
 
-            // if(data.session){
-            //     const path = `/${role === 'client' ? 'client/store' : 'owner/dashboard'}`
-            //     navigate(path)
-            // }
+                if(role == 'client'){
+                    navigate('/client/store')
+                }else if(role == 'owner'){
+                    navigate('/owner/dashboard')
+                } else {
+                    setError(authError.message)
+                    launchInterrupt()
+                }
+            
             
         }catch(error){
             console.log(error.error)

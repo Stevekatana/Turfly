@@ -1,15 +1,15 @@
 import React from 'react'
 import Sidebar from '../../Components/Sidebar'
 
-function Dashboard() {
+function Booking() {
   return (
     <div className='flex'>
       <Sidebar />
       <div>
-        Home
+        Booking
       </div>
     </div>
   )
 }
 
-export default Dashboard
+export default Booking
