@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../../Components/Sidebar'
+import Sidebar from '../../../Components/Sidebar'
 import { MdAdd } from "react-icons/md";
-import prof from '../../assets/turf.jpg'
+import prof from '../../../assets/turf.jpg'
 import { Link } from 'react-router-dom';
-import { supabase } from '../../../supabaseClient';
+import { supabase } from '../../../../supabaseClient';
 
 function Turf() {
   const [turfs, setTurf] = useState([])

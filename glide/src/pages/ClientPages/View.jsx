@@ -50,7 +50,7 @@ function View() {
                             <div>
                                 <h1 className='text-center font-semibold text-2xl mb-2'>Snaps</h1>
                             </div>
-                            <div className='flex items-center justify-center gap-10 mt-5'>
+                            <div className='flex items-center justify-center gap-10 mt-5 '>
                                 <img src={pic} alt="image not found" className='h-48 w-48 rounded-md' />
                                 <img src={pic} alt="image not found" className='h-48 w-48 rounded-md' />
                                 <img src={pic} alt="image not found" className='h-48 w-48 rounded-md' />
@@ -64,16 +64,16 @@ function View() {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <div>
-                                <h1 className='text-center text-lg mb-2'>Address</h1>
+                                <h1 className='text-center text-lg mb-2'>Address:</h1>
                                 <p className='text-xl font-semibold text-center'>{data.location}</p>
                             </div>
                             <div>
-                                <h1 className='text-center text-lg mb-2'>Price per hr</h1>
-                                <p className='text-xl text-center font-semibold'>{data.price_per_hour} /=</p>
+                                <h1 className='text-center text-lg mb-2'>Price per hr:</h1>
+                                <p className='text-xl text-center font-semibold'>Ksh {data.price_per_hour}</p>
                             </div>
                             <div className='flex flex-col justify-center items-center  gap-2 mt-10'>
-                                <p className='italic text-sm text-red-500'>Click Book now to view what periods are available</p>
-                                <Link to='/client/checkout' className='bg-[#111827] p-2 font-semibold text-white rounded-md cursor-pointer'>BOOK NOW</Link>
+                                <p className='italic text-sm text-red-500'>Click Book now to view what sessions are available</p>
+                                <Link to={`/client/checkout/${data.id}`} className='bg-[#111827] p-2 font-semibold text-white rounded-md cursor-pointer'>BOOK NOW</Link>
                             </div>
                         </div>
                     </div>

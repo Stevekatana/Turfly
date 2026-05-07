@@ -15,10 +15,11 @@ import Forgot from './Pages/Auth/Forgot'
 import Reset from './Pages/Auth/Reset'
 import View from './Pages/ClientPages/View'
 import Checkout from './Pages/ClientPages/Checkout'
-import Booking from './Pages/OwnerPages/Booking'
-import Turf from './Pages/OwnerPages/Turf'
-import NewTurf from './Pages/OwnerPages/NewTurf'
-import EditTurf from './Pages/OwnerPages/EditTurf'
+import Booking from './Pages/OwnerPages/booking/Booking'
+import Turf from './Pages/OwnerPages/turf/Turf'
+import NewTurf from './Pages/OwnerPages/turf/NewTurf'
+import EditTurf from './Pages/OwnerPages/turf/EditTurf'
+import BookingView from './Pages/OwnerPages/booking/View'
 
 function App() {
   const [role, setRole] = useState({})
@@ -85,7 +86,7 @@ function App() {
           element={sesh && role === 'client' ? <View /> : <Navigate to='/client/login'/> }
         />
         <Route 
-          path='/client/checkout' 
+          path='/client/checkout/:id' 
           element={sesh && role === 'client' ? <Checkout /> : <Navigate to='/client/login'/> }
         />
 
@@ -99,10 +100,18 @@ function App() {
           path='/owner/dashboard' 
           element={sesh && role === 'owner' ? <Dashboard /> : <Navigate to='/owner/login'/> }
         />
+
+        {/* booking routes */}
         <Route 
           path='/owner/booking'
           element={sesh && role === 'owner' ? <Booking />: <Navigate to='/owner/login'/> }
         />
+        <Route 
+          path='/owner/booking/view'
+          element={sesh && role === 'owner' ? <BookingView />: <Navigate to='/owner/login'/> }
+        />
+
+        {/* turf routes */}
         <Route 
           path='/owner/turf' 
           element={sesh && role === 'owner' ? <Turf /> : <Navigate to='/owner/login'/> }

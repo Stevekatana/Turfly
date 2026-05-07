@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Card(props) {
   return (
-    <div className='p-4 border rounded-md'>
+    <div className='p-4 border rounded-md' key={props.uid}>
         {/* Image section */}
         <div className='p-4'>
             <img src={Pic} alt="image not found" className='rounded-md'/>

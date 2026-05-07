@@ -32,6 +32,7 @@ function Home() {
             data.map((data)=>{
               return(
                 <Card 
+                  uid = {data.id}
                   turfName = { data.name }
                   location = { data.location }
                   price = { data.price_per_hour }

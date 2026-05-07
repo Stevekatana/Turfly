@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Sidebar from '../../Components/Sidebar'
-import { supabase } from '../../../supabaseClient'
+import Sidebar from '../../../Components/Sidebar'
+import { supabase } from '../../../../supabaseClient'
 import { useNavigate } from 'react-router-dom'
 
 function NewTurf() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../../Components/Sidebar'
+import Sidebar from '../../../Components/Sidebar'
 import { useNavigate, useParams } from 'react-router-dom'
-import { supabase } from '../../../supabaseClient'
+import { supabase } from '../../../../supabaseClient'
 
 function EditTurf() {
   const { id } = useParams()
